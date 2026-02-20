@@ -1,0 +1,56 @@
+# command-line study tracker
+study_sessions = [{"subject": "Chemistry", "hours": "2"}, {
+    "subject": "python", "hours": "3"}, {"subject": "sql databases", "hours": "2"}]
+
+
+def show_menu():
+    print("\n--- Study Tracker---")
+    print("1. Add Study sessions")
+    print("2.View total hours")
+    print("3.View most studied subject")
+    print("4.Exit")
+
+    choice = input("Choose an option:")
+    return choice
+
+
+while True:
+    choice = show_menu()
+
+    if choice == "1":
+        subject = input("Enter subjects: ")
+        hours = input("Enter hours studied: ")
+
+        if hours.isdigit():
+            study_sessions.append({"subject": subject, "hours": hours})
+            print(f"Added {hours} hours for {subject}")
+            input("\nPress Enter to return to Main Menu... ")
+
+        else:
+            print("Hours must be a number!")
+
+    elif choice == "2":
+        total_hours = sum(int(sessions["hours"])
+                          for sessions in study_sessions)
+        print(f"Total hours studied: {total_hours}")
+        input("\nPress Enter to return to Main Menu... ")
+
+    elif choice == "3":
+        subject_hours = {}
+        for session in study_sessions:
+            subj = session["subject"]
+            hrs = int(session["hours"])
+            subject_hours[subj] = subject_hours.get(subj, 0) + hrs
+
+        most_studied = max(subject_hours, key=subject_hours.get)
+        print(
+            f"Most studied subject: {most_studied} ({subject_hours[most_studied]} hours)")
+        input("\nPress Enter to return to Main Menu... ")
+
+    elif choice == "4":
+        print("Exiting program")
+        break
+
+else:
+    print("Invalid option. Try again bozo!")
+    input("\nPress Enter to return to Main Menu... ")
