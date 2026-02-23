@@ -1,0 +1,42 @@
+# practical ex 1 - linear search
+def linearsearch(list, pop):
+    for i in range(len(list)):
+        if list[i] == pop:
+            return i
+        return -1
+
+
+list = [12, 5, 8, 130, 44]
+pop = int(input("Whats the target number: "))
+
+result = linearsearch(list, pop)
+
+if result != -1:
+    print(f"Found at index: {result}")
+else:
+    print("Element not found in list")
+
+
+# 2 Practical ex 2 - Early return  Demo
+# -- modifying previous code
+def linearsearch(list, pop):
+    for i in range(len(list)):
+        if list[i] == pop:
+            return i  # this will return early
+        """ return -1 """
+
+
+list = [12, 5, 8, 130, 44]
+pop = int(input("Whats the target number: "))
+
+result = linearsearch(list, pop)
+
+if result != -1:
+    print(f"Found at index: {result}")
+else:
+    print("Element not found in list")
+
+
+# pracical 3 - Comparison counts
+# the above is the best case since it runs twice and returns the first key elemnt
+# as the target changes and suppose its 44, it will be worst case sceinerio and the comparison will be 4 since it runs 5 times at index 4
